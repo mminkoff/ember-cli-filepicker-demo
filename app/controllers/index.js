@@ -29,7 +29,7 @@ export default Ember.ArrayController.extend({
       newImg.imageReceived(InkBlob);
       this.get('model').pushObject(newImg);
       this.set('selectedImage', newImg);
-      this.send('filepickerClosed');
+      this.send('onClose');
 
       filepicker.stat(InkBlob,
         {width: true, height: true},
@@ -46,14 +46,14 @@ export default Ember.ArrayController.extend({
       );
     },
 
-    filepickerError: function (FPError) {
+    onError: function (FPError) {
       // unless dialog closed by user
       if (FPError.code !== 101) {
         this.get('errors').pushObject(FPError.toString());
       }
     },
 
-    filepickerClosed: function () {
+    onClose: function () {
       this.set('openPicker',false);
     },
 
