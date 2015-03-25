@@ -8,7 +8,7 @@ export default Ember.ArrayController.extend({
 
   imageOptions: {
     mimetypes: ['image/*'],
-    services: ['COMPUTER', 'FACEBOOK', 'GMAIL', 'BOX', 'DROPBOX', 'FLICKR', 'PICASA', 'INSTAGRAM']
+    services: ['COMPUTER', 'IMAGE_SEARCH', 'WEBCAM', 'FACEBOOK', 'GMAIL', 'BOX', 'DROPBOX', 'FLICKR', 'PICASA', 'INSTAGRAM']
   },
 
   textOptions: {
