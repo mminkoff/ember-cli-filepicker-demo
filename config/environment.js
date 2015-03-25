@@ -6,6 +6,12 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    contentSecurityPolicy: {
+      "script-src": "'self' http://api.filepicker.io/v1/filepicker.js",
+      "img-src": "'self' https://www.filepicker.io/ https://www.filepicker.com/",
+      "connect-src": "'self' ws://localhost:35729 ws://0.0.0.0:35729 http://0.0.0.0:4200/csp-report https://www.filepicker.io/",
+      "frame-src": "https://dialog.filepicker.io/ https://www.filepicker.io/"
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -16,6 +22,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      filepickerKey: 'AOkSBYOLvTqK3GzWzQMOuz'
     }
   };
 
