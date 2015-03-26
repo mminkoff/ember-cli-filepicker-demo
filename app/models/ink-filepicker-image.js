@@ -54,7 +54,7 @@ export default DS.Model.extend({
   },
 
   addWatermark: function (params, watermarkUrl) {
-    params.watermark = watermarkUrl ||  'https://d3urzlae3olibs.cloudfront.net/ddfab59/img/ink/logo_inverted.png';
+    params.watermark = watermarkUrl ||  'https://www.filepicker.io/api/file/9IphiAATxeAnAbHJDhe3';
     params.waterposition = 'bottom,right';
     return params;
   }
