@@ -24,7 +24,7 @@ export default DS.Model.extend({
 
   mediumImageUrl: (function () {
     // tack on conversion properties for cacheable
-    // medium image watermarked with Ink's logo
+    // medium image watermarked with Filepicker's logo
     var params = {};
     params = this.addHeight(params, 150);
     params = this.addWatermark(params);
@@ -54,7 +54,7 @@ export default DS.Model.extend({
   },
 
   addWatermark: function (params, watermarkUrl) {
-    params.watermark = watermarkUrl ||  'https://d3urzlae3olibs.cloudfront.net/ddfab59/img/ink/logo_inverted.png';
+    params.watermark = watermarkUrl ||  'https://www.filepicker.io/api/file/9IphiAATxeAnAbHJDhe3';
     params.waterposition = 'bottom,right';
     return params;
   }
