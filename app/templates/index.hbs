@@ -1,0 +1,77 @@
+<div class="head">
+  {{#if selectedImage.ready}}
+    <h2>Selected Image</h2>
+    <p class="selected">
+      <img {{bind-attr src="selectedImage.mediumImageUrl"}} height=150 {{bind-attr width="selectedImage.mediumWidth"}} />
+      <a {{bind-attr href="selectedImage.imageUrl"}} target="_blank">View Original</a>
+    </p>
+  {{/if}}
+
+  {{#if errors.length}}
+    <div class="errors">
+      <h2>Errors</h2>
+      <ul>
+        {{#each error in errors}}
+          <li>{{error}}</li>
+        {{/each}}
+      </ul>
+      <button {{action clearErrors}}>Clear Errors</button>
+    </div>
+  {{/if}}
+</div>
+
+{{#if showTable}}
+  <h2>Picked Images</h2>
+  <table class="table table-bordered">
+    <thead>
+      <th class="image">thumb</th>
+      <th class="url">url (click to view above)</th>
+      <th class="name">name</th>
+      <th class="size">size</th>
+      <th class="width">width</th>
+      <th class="height">height</th>
+    </thead>
+    {{#each picked in model}}
+      {{#if picked.ready}}
+        <tr>
+          <td class="image">
+            <a {{action "setSelected" picked}} href="#">
+              <img {{bind-attr src="picked.thumbImageUrl"}} />
+            </a>
+          </td>
+          <td class="url">
+            <span><a {{action "setSelected" picked}} href="#">{{picked.imageUrl}}</a></span>
+          </td>
+          <td class="name">
+            <span>{{picked.filename}}</span>
+          </td>
+          <td class="size">
+            <span>{{picked.size}} KB</span>
+          </td>
+          <td class="width">
+            <span>{{picked.width}}px</span>
+          </td>
+          <td class="height">
+            <span>{{picked.height}}px</span>
+          </td>
+        </tr>
+      {{/if}}
+    {{/each}}
+  </table>
+{{else}}
+  <p class="no_images">No images picked yet</p>
+{{/if}}
+
+<p>
+  <button class="btn btn-primary" {{action "pickWithFilepicker"}}>
+    {{#if showTable}}
+      Add another Image
+    {{else}}
+      Add an Image
+    {{/if}}
+  </button>
+</p>
+
+{{#if openPicker}}
+  {{ember-filepicker options=imageOptions onSelection='fileSelected' onClose='onClose' onError='onError'}}
+{{/if}}

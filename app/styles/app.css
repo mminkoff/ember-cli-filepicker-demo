@@ -1,0 +1,31 @@
+body > div.ember-view {
+  max-width: 950px;
+  margin: 30px auto;
+}
+
+.selected {
+  margin-bottom: 30px;
+}
+
+.selected img {
+  margin: 5px 13px 0 0;
+}
+
+td, th {
+  padding: 4px 8px;
+  vertical-align: top;
+}
+
+td.size {
+  white-space: nowrap;
+}
+td.image {
+  width: 50px;
+}
+td.url {
+  min-width: 180px;
+  word-break: break-all;
+}
+td.name {
+  word-break: break-all;
+}
