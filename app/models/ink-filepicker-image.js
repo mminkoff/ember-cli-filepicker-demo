@@ -24,7 +24,7 @@ export default DS.Model.extend({
 
   mediumImageUrl: (function () {
     // tack on conversion properties for cacheable
-    // medium image watermarked with Ink's logo
+    // medium image watermarked with Filepicker's logo
     var params = {};
     params = this.addHeight(params, 150);
     params = this.addWatermark(params);

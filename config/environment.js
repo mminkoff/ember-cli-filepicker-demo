@@ -6,6 +6,7 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/ember-ink-filepicker',
     locationType: 'hash',
+    filepickerKey: 'AOkSBYOLvTqK3GzWzQMOuz',
     contentSecurityPolicy: {
       "script-src": "'self' http://api.filepicker.io/v1/filepicker.js",
       "img-src": "'self' https://www.filepicker.io/ https://www.filepicker.com/",
@@ -22,7 +23,6 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      filepickerKey: 'AOkSBYOLvTqK3GzWzQMOuz'
     }
   };
 
