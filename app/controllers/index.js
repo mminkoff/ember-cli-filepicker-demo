@@ -4,6 +4,8 @@ import Ember from 'ember';
 // import InkFilepickerImage from '../models/ink-filepicker-image';
 
 export default Ember.ArrayController.extend({
+  filepicker: Ember.inject.service(),
+
   errors: [],
 
   imageOptions: {
@@ -31,19 +33,21 @@ export default Ember.ArrayController.extend({
       this.set('selectedImage', newImg);
       this.send('onClose');
 
-      filepicker.stat(InkBlob,
-        {width: true, height: true},
-        function (metadata) {
-          newImg.sizeReceived(metadata);
-          newImg.set('ready', true);
-        },
-        function (FPError) {
-          // unless dialog closed by user
-          if (FPError.code !== 101) {
-            _this.get('errors').pushObject(FPError.toString());
+      this.get('filepicker.promise').then(function(filepicker) {
+        filepicker.stat(InkBlob,
+          {width: true, height: true},
+          function (metadata) {
+            newImg.sizeReceived(metadata);
+            newImg.set('ready', true);
+          },
+          function (FPError) {
+            // unless dialog closed by user
+            if (FPError.code !== 101) {
+              _this.get('errors').pushObject(FPError.toString());
+            }
           }
-        }
-      );
+        );
+      });
     },
 
     onError: function (FPError) {
